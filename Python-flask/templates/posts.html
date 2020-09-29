@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %}
+ <title>posts</title>
+{%endblock%}
+
+{% block body %}
+<h1>Registration Sheet</h1>
+
+<form action="/posts" method="POST">
+    Add your name: <input type="text" name="name" id="name">
+    <br>
+    Add your email: <input type="email" name="email" id="email">
+    <br>
+    <input type="submit" value="Post">
+    <hr>
+</form>
+
+
+    {% for post in posts %}
+            <h2>{{post.name}}</h2>
+            <p>{{post.email}}</p>
+            <a href='/posts/delete/{{post.id}}'>Delete</a>
+            <a href='/posts/edit/{{post.id}}'>Edit</a>
+    {% endfor %}
+
+{%endblock%}
